@@ -36,7 +36,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :orders
+- has_one :order
 
 
 ## orders テーブル
@@ -50,20 +50,20 @@
 
 - belongs_to :product
 - belongs_to :user
-- has_one :sends
+- has_one :send
 
 
 ## sends テーブル
 
-| Column    | Type       | Options                        |
-| --------- | ---------- | ------------------------------ |
-| postal_id | integer    | null: false |
-| state_id  | integer    | null: false |
-| city      | string     | null: false |
-| number    | string     | null: false |
-| building  | string     | null: true  |
-| phone     | string     | null: false |
-| order     | references | null: false, foreign_key: true |
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| postal_code | string     | null: false |
+| state_id    | integer    | null: false |
+| city        | string     | null: false |
+| number      | string     | null: false |
+| building    | string     | null: true  |
+| phone       | string     | null: false |
+| order       | references | null: false, foreign_key: true |
 
 ### Association
 
