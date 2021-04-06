@@ -1,70 +1,24 @@
-# テーブル設計
+# README
 
-## users テーブル
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| nickname           | string | null: false |
-| email              | string | null: false, unique:true |
-| encrypted_password | string | null: false |
-| last_name          | string | null: false |
-| first_name         | string | null: false |
-| last_name_kana     | string | null: false |
-| first_name_kana    | string | null: false |
-| birth_date         | date   | null: false |
+Things you may want to cover:
 
-### Association
+* Ruby version
 
-- has_many :products
-- has_many :orders
+* System dependencies
 
+* Configuration
 
-## products テーブル
+* Database creation
 
-| Column          | Type       | Options     |
-| --------------- | ---------- | ----------- |
-| title           | string     | null: false |
-| text            | text       | null: false |
-| category_id     | integer    | null: false |
-| status_id       | integer    | null: false |
-| ship_pay_id     | integer    | null: false |
-| area_id         | integer    | null: false |
-| delivery_day_id | integer    | null: false |
-| price           | integer    | null: false |
-| user            | references | null: false, foreign_key: true |
+* Database initialization
 
-### Association
+* How to run the test suite
 
-- belongs_to :user
-- has_one :order
+* Services (job queues, cache servers, search engines, etc.)
 
+* Deployment instructions
 
-## orders テーブル
-
-| Column    | Type       | Options                        |
-| --------- | ---------- | ------------------------------ |
-| user      | references | null: false, foreign_key: true |
-| product   | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :product
-- belongs_to :user
-- has_one :send
-
-
-## sends テーブル
-
-| Column      | Type       | Options                        |
-| ----------- | ---------- | ------------------------------ |
-| postal_code | string     | null: false |
-| area_id     | integer    | null: false |
-| city        | string     | null: false |
-| number      | string     | null: false |
-| building    | string     | null: true  |
-| phone       | string     | null: false |
-| order       | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :order
+* ...
