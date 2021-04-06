@@ -15,7 +15,7 @@
 
 ### Association
 
-- has_many :product
+- has_many :products
 - has_many :orders
 
 
