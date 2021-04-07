@@ -4,12 +4,14 @@ class Product < ApplicationRecord
   has_one_attached :image
   has_one :order
 
-  validates :title, presence: true
-  validates :text, presence: true
-  validates :category_id, presence: true
-  validates :status_id, presence: true
-  validates :ship_pay_id, presence: true
-  validates :area_id, presence: true
-  validates :delivery_day_id, presence: true
-  validates :price, presence: true
+  with_options  presence: true do  
+    validates :title
+    validates :text
+    validates :category_id
+    validates :status_id
+    validates :ship_pay_id
+    validates :area_id
+    validates :delivery_day_id
+    validates :price
+  end
 end
