@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # has_many :products
-  # has_many :orders
+  has_many :products
+  has_many :orders
 
   # 半角英数字両方含むバリデーション
   validates :password, format: { with: /([0-9].*[a-zA-Z]|[a-zA-Z].*[0-9])/, message: '半角英数混合でお願いします' }
