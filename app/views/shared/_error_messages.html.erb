@@ -1,9 +1,19 @@
 <% if @user.errors.any? %>
-<div class="error-alert">
-  <ul>
-    <% @user.errors.full_messages.each do |message| %>
-    <li class='error-message'><%= message %></li>
-    <% end %>
-  </ul>
-</div>
+  <div class="error-alert">
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+      <li class='error-message'><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if @product.errors.any? %>
+  <div class="error-alert">
+    <ul>
+      <% @product.errors.full_messages.each do |message| %>
+      <li class='error-message'><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
