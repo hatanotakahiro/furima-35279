@@ -9,9 +9,7 @@ app/assets/stylesheets/products/new.css %>
     <h2 class="products-sell-title">商品の情報を入力</h2>
     <%= form_with local: true do |f| %>
 
-    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%# render 'shared/error_messages', model: f.object %>
-    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+    <% render 'shared/error_messages', model: f.object %>
 
     <%# 出品画像 %>
     <div class="img-upload">
@@ -23,7 +21,7 @@ app/assets/stylesheets/products/new.css %>
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :hoge, id:"product-image" %>
+        <%= f.file_field :image, id:"product-image" %>
       </div>
     </div>
     <%# /出品画像 %>
