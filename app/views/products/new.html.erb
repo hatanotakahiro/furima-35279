@@ -7,7 +7,8 @@
     <h2 class="products-sell-title">商品の情報を入力</h2>
     <%= form_with model: @product, local: true do |f| %>
 
-    <%= render 'shared/error_messages', model: f %>
+    ↓<%# f.objectで@product.errorのみ反応する %>
+    <%= render 'shared/error_messages', model: f.object %>
 
     <%# 出品画像 %>
     <div class="img-upload">
