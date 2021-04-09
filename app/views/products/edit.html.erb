@@ -7,8 +7,6 @@ app/assets/stylesheets/products/new.css %>
   </header>
   <div class="products-sell-main">
     <h2 class="products-sell-title">商品の情報を入力</h2>
-    <%= form_with local: true do |f| %>
-
     <%= form_with model: @product, local: true do |f| %>
     
     <%= render 'shared/error_messages', model: f.object %>
