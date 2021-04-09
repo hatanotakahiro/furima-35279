@@ -10,7 +10,6 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @user = current_user
     if @product.save
       redirect_to root_path
     else
