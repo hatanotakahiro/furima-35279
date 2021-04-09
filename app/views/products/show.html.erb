@@ -4,7 +4,7 @@
 <div class="product-show">
   <div class="product-box">
     <h2 class="name">
-      <%= "商品名" %>
+      <%= @product.title %>
     </h2>
     <div class="product-img-content">
       <%= image_tag @product.image ,class:"product-box-img" %>
@@ -24,7 +24,7 @@
     </div>
 
     <% if user_signed_in? %>
-      <% if user_signed_in? && current_user.id == @product.user_id %>
+      <% if current_user.id == @product.user_id %>
         <%= link_to "商品の編集", "#", method: :get, class: "product-red-btn" %>
         <p class="or-text">or</p>
         <%= link_to "削除", "#", method: :delete, class:"product-destroy" %>
@@ -36,7 +36,7 @@
     <% end %>
 
     <div class="product-explain-box">
-      <span><%= "商品説明" %></span>
+      <span><%= @product.text %></span>
     </div>
     <table class="detail-table">
       <tbody>
@@ -102,7 +102,7 @@
     </a>
   </div>
   <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
-  <a href="#" class="another-product"><%= "商品のカテゴリー名" %>をもっと見る</a>
+  <a href="#" class="another-product"><%= @product.category.name %>をもっと見る</a>
   <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
 </div>
 
