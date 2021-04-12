@@ -2,7 +2,7 @@ class Product < ApplicationRecord
 
   belongs_to :user
   has_one_attached :image
-  has_one :order
+  has_one :order, dependent: :destroy
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :area

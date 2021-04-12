@@ -15,7 +15,6 @@ class OrdersController < ApplicationController
     @order_deliver = OrderDeliver.new(order_deliver_params)
     if @order_deliver.valid?
       pay_product
-      binding.pry
       @order_deliver.save
       redirect_to root_path
     else
@@ -23,6 +22,7 @@ class OrdersController < ApplicationController
     end
   end
 
+  
   private
   def order_deliver_params
     params.require(:order_deliver).permit(:postal_code, :area_id, :city, :number, :building, :phone).merge(token: params[:token], user_id: current_user.id, product_id: @product.id)
