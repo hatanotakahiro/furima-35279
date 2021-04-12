@@ -25,17 +25,17 @@
       </span>
     </div>
 
-    <% if user_signed_in? %>
-      <% if current_user.id == @product.user_id %>
-        <%= link_to "商品の編集", edit_product_path(@product.id), method: :get, class: "product-red-btn" %>
-        <p class="or-text">or</p>
-        <%= link_to "削除", product_path(@product.id), method: :delete, class:"product-destroy" %>
-      <% else %>
-        <% if @product.order.present? %>
-          <%= "売却済" %>
+    <% if user_signed_in?  %>
+      <% if @product.order.blank? %>%
+        <% if current_user.id == @product.user_id %>
+          <%= link_to "商品の編集", edit_product_path(@product.id), method: :get, class: "product-red-btn" %>
+          <p class="or-text">or</p>
+          <%= link_to "削除", product_path(@product.id), method: :delete, class:"product-destroy" %>
         <% else %>
           <%= link_to "購入画面に進む", product_orders_path(@product.id), class:"product-red-btn"%>
         <% end %>
+      <% else %>
+        <%= "売却済" %>
       <% end %>
     <% end %>
 

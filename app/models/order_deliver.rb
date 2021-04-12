@@ -7,7 +7,7 @@ class OrderDeliver
     validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :city
     validates :number
-    validates :phone
+    validates :phone, format: {with: /\A\d{11}\z/, message: "は11桁の半角数字でお願いします"}
 
     validates :product_id
     validates :user_id
