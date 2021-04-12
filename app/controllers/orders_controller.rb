@@ -3,13 +3,13 @@ class OrdersController < ApplicationController
   before_action :set_product, only: [:index, :create]
 
   def index
-    @order_deliver = OrderSend.new
+    @order_deliver = OrderDliver.new
   end
   def new
-    @order_deliver = OrderSend.new
+    @order_deliver = OrderDliver.new
   end
   def create
-    @order_deliver = OrderSend.new(order_deliver_params)
+    @order_deliver = OrderDliver.new(order_deliver_params)
     if @order_deliver.valid?
       pay_product
       binding.pry
