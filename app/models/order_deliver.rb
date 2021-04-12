@@ -1,4 +1,4 @@
-class OrderDliver
+class OrderDeliver
   # formオブジェクトパターン
   include ActiveModel::Model
   attr_accessor :token, :postal_code, :area_id, :city, :number, :building, :phone, :order_id, :user_id, :product_id
@@ -17,7 +17,6 @@ class OrderDliver
   validates :area_id, numericality: {other_than: 0, message: "can't be blank"}
 
   def save
-    binding.pry
     order = Order.create(user_id: user_id, product_id: product_id)
     # 住所を保存する
     # order_idには、変数orderのidと指定する
