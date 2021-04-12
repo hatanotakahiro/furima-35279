@@ -9,16 +9,18 @@ class OrderSend
     validates :number
     validates :phone
 
+    validates :product_id
+    validates :user_id
+
     validates :token
   end
   validates :area_id, numericality: {other_than: 0, message: "can't be blank"}
 
   def save
     binding.pry
-    order = Order.create(product_id: product_id, user_id: user_id)
+    order = Order.create(user_id: user_id, product_id: product_id)
     # 住所を保存する
     # order_idには、変数orderのidと指定する
-    binding.pry
     Send.create(postal_code: postal_code, area_id: area_id, city: city, number: number, building: building, phone: phone, order_id: order.id)
   end
 

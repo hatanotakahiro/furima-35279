@@ -50,10 +50,10 @@
 
 - belongs_to :product
 - belongs_to :user
-- has_one :send
+- has_one :deliver
 
 
-## sends テーブル
+## delivers テーブル
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
@@ -61,7 +61,7 @@
 | area_id     | integer    | null: false |
 | city        | string     | null: false |
 | number      | string     | null: false |
-| building    | string     | null: true  |
+| building    | string     |
 | phone       | string     | null: false |
 | order       | references | null: false, foreign_key: true |
 

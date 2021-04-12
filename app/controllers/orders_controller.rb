@@ -1,37 +1,40 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_product, only: [:index, :create]
+
   def index
-    @order_send = OrderSend.new
-    @product = Product.find(params[:product_id])
+    @order_deliver = OrderSend.new
   end
   def new
-    @order_send = OrderSend.new
+    @order_deliver = OrderSend.new
   end
   def create
-    @order_send = OrderSend.new(order_send_params)
-    @product = Product.find(params[:product_id])
-    if @order_send.valid?
-      binding.pry
+    @order_deliver = OrderSend.new(order_deliver_params)
+    if @order_deliver.valid?
       pay_product
-
-      @order_send.save
+      binding.pry
+      @order_deliver.save
       redirect_to root_path
     else
-      @product = Product.find(params[:product_id])
       render :index
     end
   end
+
   private
-  def order_send_params
-    params.require(:order_send).permit(:postal_code, :area_id, :city, :number, :building, :phone, :product_id, :token).merge(token: params[:token], user_id: current_user.id, product_id: params[:product_id])
+  def order_deliver_params
+    params.require(:order_deliver).permit(:postal_code, :area_id, :city, :number, :building, :phone).merge(token: params[:token], user_id: current_user.id, product_id: @product.id)
   end
 
   def pay_product
     Payjp.api_key = "sk_test_c5cdc5e25787e58d060795ad"  # 自身のPAY.JPテスト秘密鍵を記述しましょう
     Payjp::Charge.create(
       amount: @product.price,  # 商品の値段
-      card: order_send_params[:token],    # カードトークン
+      card: order_deliver_params[:token],    # カードトークン
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
+  end
+
+  def set_product
+    @product = Product.find(params[:product_id])
   end
 end
