@@ -42,7 +42,6 @@ class OrdersController < ApplicationController
   end
 
   def authenticate_buyer_or_sold_out
-    @product = Product.find(params[:product_id])
     if @product.user == current_user || @product.order.present?
       redirect_to root_path
     end
