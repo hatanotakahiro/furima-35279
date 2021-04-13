@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :product_edit_protect, only: [:edit, :update, :destroy]
+  before_action :sold_out_or_product_user?, only: [:edit, :update, :destroy]
 
   def index
     @products = Product.includes(:user).order("created_at DESC")
@@ -48,9 +48,9 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
   
-  def product_edit_protect
-    unless @product.user == current_user
-      redirect_to action: :index
+  def sold_out_or_product_user?
+    if @product.user != current_user || @product.order.present?
+      redirect_to root_path
     end
   end
 
