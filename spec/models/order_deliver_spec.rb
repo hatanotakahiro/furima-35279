@@ -63,6 +63,11 @@ RSpec.describe OrderDeliver, type: :model do
         @order_deliver.valid?
         expect(@order_deliver.errors.full_messages).to include("Phone can't be blank")
       end
+      it 'phoneが英数字混合だと保存できないこと' do
+        @order_deliver.phone = '090a7b7c7d'
+        @order_deliver.valid?
+        expect(@order_deliver.errors.full_messages).to include("Phone は11桁の半角数字でお願いします")
+      end
       it 'phoneが11桁でないと保存できないこと' do
         @order_deliver.phone = '0904747474'
         @order_deliver.valid?
